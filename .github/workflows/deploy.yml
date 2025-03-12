@@ -1,4 +1,4 @@
-name: Question 2 - 3. CI/CD Pipeline for Automation
+name: Question 2
 
 on:
   push:
@@ -33,6 +33,13 @@ jobs:
         KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
       with:
         args: apply -f service.yaml
+
+    - name: Apply ingress to Kubernetes
+      uses: actions-hub/kubectl@v1.32.2
+      env:
+        KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+      with:
+        args: apply -f ingress.yaml
       
 
     
