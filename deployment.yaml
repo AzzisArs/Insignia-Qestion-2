@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: azzis-flask-app
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: azzis-flask-app
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: azzis-flask-app
+    spec:
+      containers:
+      - image: azzis/azzis-flask-app:latest
+        imagePullPolicy: IfNotPresent
+        name: azzis-flask-app
+        ports:
+        - containerPort: 5000
